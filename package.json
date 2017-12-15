@@ -1,0 +1,24 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "npm packages for liri application created with node",
+  "main": "keys.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sbribrowne/Liri-Node-App.git"
+  },
+  "author": "Sade Browne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sbribrowne/Liri-Node-App/issues"
+  },
+  "homepage": "https://github.com/sbribrowne/Liri-Node-App#readme",
+  "dependencies": {
+    "node-spotify-api": "^1.0.7",
+    "request": "^2.83.0",
+    "twitter": "^1.7.1"
+  }
+}
