@@ -1,7 +1,7 @@
 //dependencies
-var keys = require(keys.js);
+var keys = require("./keys.js");
 var Twitter = require("twitter");
-var client = newTwitter(keys.twitterKeys);
+//var client = newTwitter(keys.twitterKeys);
 var Spotify = require("node-spotify-api");
 var Request = require("request");
 
@@ -28,7 +28,19 @@ switch (userInput) {
 };
 
 //twitter function
-function showTweets(argument) {
+function showTweets() {
+
+    var client = new Twitter({
+        consumer_key: 'wb3XHtu3eRM1MDf6fqH7lLyRz',
+        consumer_secret: 'aEGdlGMUBHpbYShctAQDcRxVDWBuqmCKa6LSkDiHiubluPcIFt',
+        access_token_key: '912253671592939520-SNzMX9xqhc3TfFYHZF5vtXwaYrgdIpk',
+        access_token_secret: 'rdfzuvESuhCYZf0RlSdW0TfVsptf4ZTXx5pD99iwKWx8E'
+    });
+
+    var params = {
+        screen_name: 'codebrittany',
+        count: 20,
+    };
 
 	    client.get('statuses/user_timeline', params, function (error, tweets, response) {
 	    	if(error) throw error;
@@ -38,7 +50,7 @@ function showTweets(argument) {
                 console.log(tweets[i].text + " Created: " + tweets[i].created_at);
         	} 
 
-        };
+      });
 
 };
 
@@ -46,8 +58,8 @@ function showTweets(argument) {
 function showSong() {
 
 	var spotify = new Spotify({
-	id: <your spotify client id>,
-	secret: <your spotify client secret>
+	id: "2b2c3c6cb1b94c5a9aecb388f1e238b4",
+	secret: "90bfab24ba324f77af08b3f7fdd31661"
 	});
  
 spotify
@@ -71,6 +83,14 @@ function showMovie(argument) {
 
 //do what it says function
 function doSomething(argument) {
-	//capture text in random.txt file
-	//insert that text into the showSong() function
+	 fs.readFile("random.txt", "UTF8", function(error,data) {
+    var dataArr = data.split(",");
+        var command = dataArr[0];
+        var choice = dataArr[1];
+
+    if (command === "spotify-this-song") {
+            userChoice = choice;
+            spotifySong(userChoice);
+        }
+  });
 }
